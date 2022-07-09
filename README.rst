@@ -1,8 +1,8 @@
 Caffeine-ng
 ===========
 
-.. image:: https://travis-ci.com/caffeine-ng/caffeine-ng.svg?branch=master
-  :target: https://travis-ci.com/caffeine-ng/caffeine-ng
+.. image:: https://ci.codeberg.org/api/badges/WhyNotHugo/caffeine-ng/status.svg
+  :target: https://ci.codeberg.org/WhyNotHugo/caffeine-ng/branches/main
   :alt: build status
 
 .. image:: https://img.shields.io/pypi/v/caffeine-ng.svg
