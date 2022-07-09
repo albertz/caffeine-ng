@@ -41,7 +41,7 @@ if __name__ == "__main__":
         author_email="hugo@barrera.io",
         maintainer="Hugo Osvaldo Barrera",
         maintainer_email="hugo@barrera.io",
-        url="https://github.com/caffeine-ng/caffeine-ng",
+        url="https://codeberg.org/WhyNotHugo/caffeine-ng",
         packages=find_packages(),
         include_package_data=True,
         data_files=get_data_files(),

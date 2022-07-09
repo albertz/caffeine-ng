@@ -10,7 +10,7 @@ Caffeine-ng
   :alt: version on pypi
 
 .. image:: https://img.shields.io/pypi/l/caffeine-ng.svg
-  :target: https://github.com/caffeine-ng/caffeine-ng/blob/master/LICENCE
+  :target: https://codeberg.org/WhyNotHugo/caffeine-ng/src/branch/main/LICENCE
   :alt: licence
 
 Caffeine is a little daemon that sits in your systray, and prevents the

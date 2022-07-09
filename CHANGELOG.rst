@@ -68,3 +68,6 @@ Other changes
    wrapper scripts or using tools like Firejail.
 
  - The "preferences" desktop entry has been dropped.
+
+ - This project has moved to Codeberg, an open source, community maintained
+   code forge. The official home is now https://codeberg.org/WhyNotHugo/caffeine-ng
