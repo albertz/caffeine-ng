@@ -3,3 +3,15 @@ pipeline:
     image: precommitci/runner-image
     commands:
       - pre-commit run --color always --all
+  publish:
+    image: python
+    environment:
+      - TWINE_USERNAME=__token__
+    commands:
+      - pip install wheel build setuptools_scm twine
+      - python -m build --no-isolation
+      - sha256sum dist/*
+      - twine upload dist/*
+    when:
+      event: tag
+      tag: v*
