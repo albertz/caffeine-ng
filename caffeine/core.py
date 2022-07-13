@@ -19,6 +19,7 @@ import os.path
 from gettext import gettext as _
 from threading import Timer
 from typing import List
+from typing import Literal
 from typing import Optional
 
 from gi.repository import GLib
@@ -121,7 +122,7 @@ class Caffeine(GObject.GObject):
 
         logger.info(self.status_string)
 
-    def run_all_triggers(self, show_notification=False) -> None:
+    def run_all_triggers(self, show_notification=False) -> Literal[True]:
         """Runs all triggers to determine the currently desired status."""
         inhibit = DesiredState.UNINHIBITED
 
@@ -135,6 +136,10 @@ class Caffeine(GObject.GObject):
         logger.info(f"Desired state is: {inhibit}")
         self.desired_state = inhibit
         self.apply_desired_status(show_notification)
+
+        # Timeout will repeat indefinitely while this returns True.
+        # TODO: Some of the triggers can be event based, rather than polling.
+        return True
 
     def quit(self) -> None:
         """
