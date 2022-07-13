@@ -2,6 +2,11 @@
 Changelog
 =========
 
+v4.0.1
+------
+
+- Fixed an issue which prevents caffeine-ng from sometimes triggering properly.
+
 v4.0.0
 ------
 
