@@ -9,7 +9,7 @@ pipeline:
       - TWINE_USERNAME=__token__
     commands:
       - pip install wheel build setuptools_scm twine
-      - python -m build --no-isolation
+      - python -m build --sdist --no-isolation
       - sha256sum dist/*
       - twine upload dist/*
     when:
