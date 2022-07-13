@@ -11,7 +11,7 @@ pipeline:
       - pip install wheel build setuptools_scm twine
       - python -m build --sdist --no-isolation
       - sha256sum dist/*
-      - twine upload --non-interactive dist/*
+      - twine upload --non-interactive --skip-existing dist/*
     when:
       event: tag
       tag: v*
