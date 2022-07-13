@@ -109,6 +109,17 @@ Gentoo
 
 Gentoo users may find `caffeine-ng <https://github.com/PF4Public/gentoo-overlay/tree/master/x11-misc/caffeine-ng>`_ in `::pf4public <https://github.com/PF4Public/gentoo-overlay>`_ Gentoo overlay
 
+Instructions for packager
+-------------------------
+
+Generating a Python wheel for this will produce bogus results. Python wheels do
+now allow for files outside python's site-packages (and things in /bin).
+
+The Python ecosystem is deprecating the usage of `pip` and `setuptools` as
+generic packaging tools. This project will likely migrate to `meson` in future,
+which should ease shipping all the non-Python bits of it (desktop entry, icon,
+translations, service files, etc).
+
 Auto-start
 ----------
 
