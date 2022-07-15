@@ -25,7 +25,13 @@ from gi.repository import GObject
 
 gi.require_version("GdkPixbuf", "2.0")
 gi.require_version("Gtk", "3.0")
-gi.require_version("Notify", "0.7")
+try:
+    # I haven't found a way to specify a range.
+    # It seems we need to pin a version in the code, but users might have 0.7 or 0.8.
+    # Either works fine.
+    gi.require_version("Notify", "0.7")
+except ValueError:
+    gi.require_version("Notify", "0.8")
 gi.require_version("AppIndicator3", "0.1")
 
 from gi.repository import AppIndicator3  # noqa: E402
