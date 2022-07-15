@@ -4,6 +4,7 @@
 
 import logging
 import os
+import shutil
 import threading
 import time
 from abc import ABC
@@ -256,8 +257,8 @@ class XfceInhibitor(BaseInhibitor):
 
     @property
     def applicable(self):
-        # TODO!
-        return True
+        # If `xfconf-query` is absent, this is not applicable.
+        return shutil.which("xfconf-query") is not None
 
 
 class XidlehookInhibitor(BaseInhibitor):
