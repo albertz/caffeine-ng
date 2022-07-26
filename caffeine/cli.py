@@ -5,6 +5,7 @@ import signal
 import click
 from setproctitle import setproctitle
 
+from caffeine import __version__
 from caffeine.applicationinstance import ApplicationInstance
 from caffeine.main import GUI
 
@@ -12,7 +13,7 @@ logger = logging.getLogger(__name__)
 
 
 @click.group(invoke_without_command=True)
-@click.version_option(prog_name="caffeine")
+@click.version_option(version=__version__, prog_name="caffeine")
 @click.option("--verbose", "-v", is_flag=True)
 @click.pass_context
 def cli(ctx, verbose):
