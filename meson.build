@@ -41,10 +41,14 @@ paths_py = configure_file(
     configuration: conf_data,
 )
 
-# XXX: Might need "git describe --dirty --long"?
-version_py = vcs_tag(
+# Cannot use vcs_tag; that file cannot be installed.
+# See: https://github.com/mesonbuild/meson/issues/4893
+version_py = configure_file(
     input: 'caffeine/version.py',
     output: 'version.py',
+    configuration: configuration_data({
+      'VCS_TAG': run_command('git', 'describe', '--long', '--tags', '--dirty', '--always').stdout().strip()
+    }),
 )
 
 py_sources = [
@@ -60,7 +64,7 @@ py_sources = [
     'caffeine/procmanager.py',
     'caffeine/triggers.py',
     'caffeine/utils.py',
-    join_paths(meson.current_build_dir(), 'version.py'),
+    version_py,  # Is patched with VCS version.
 ]
 python.install_sources(py_sources,
   subdir: 'caffeine',
