@@ -2,6 +2,10 @@ project(
     'caffeine-ng',
     version: '4.1.0',
     meson_version: '>=0.63.0',
+    default_options: [
+      # The default can yield broken results.
+      'python.install_env=auto'
+    ]
 )
 
 dependency('pygobject-3.0')
