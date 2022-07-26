@@ -1,4 +1,4 @@
-# Copyright (c) 2014 Hugo Osvaldo Barrera
+# Copyright (c) 2014-2022 Hugo Osvaldo Barrera
 #
 # This program is free software: you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by
@@ -13,7 +13,6 @@
 # You should have received a copy of the GNU General Public License
 # along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #
-import os
 from os import makedirs
 from os.path import exists
 from os.path import join
@@ -25,11 +24,10 @@ except ModuleNotFoundError:
 
     xdg_config_home = str(xdg_config_home())
 
-PACKAGE_PATH = os.path.dirname(__file__)
-LOCALE_PATH = join(PACKAGE_PATH, "locale")
-GLADE_PATH = join(PACKAGE_PATH, "assets/glade")
-IMAGE_PATH = join(PACKAGE_PATH, "assets/images")
-ICON_PATH = join(PACKAGE_PATH, "assets/icons")
+LOCALE_PATH = '@localedir@'
+GLADE_PATH = "@gladedir@"
+IMAGE_PATH = "@imagedir@"
+ICON_PATH = "@iconsdir@"
 
 
 def get_glade_file(filename):

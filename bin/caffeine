@@ -1,0 +1,5 @@
+#!/usr/bin/python
+
+from caffeine.cli import cli
+
+cli()

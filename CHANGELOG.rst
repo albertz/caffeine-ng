@@ -2,6 +2,12 @@
 Changelog
 =========
 
+v4.1.0
+------
+
+- The build system has switched to `meson`.
+- The `wheel` python package is no longer required.
+
 v4.0.1
 ------
 

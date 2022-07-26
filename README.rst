@@ -57,14 +57,12 @@ See ``setup.py`` for required python packages
 Installation
 ------------
 
-Generic installation
-....................
+ArchLinux
+.........
 
-To manually install caffeine-ng, run::
+On ArchLinux, caffeine-ng is available at the `AUR`_.
 
-      python setup.py build
-      sudo python setup.py install
-      sudo glib-compile-schemas /usr/share/glib-2.0/schemas
+.. _AUR: https://aur.archlinux.org/packages/caffeine-ng/
 
 Debian and derivatives
 ......................
@@ -79,8 +77,8 @@ And mark them auto if you wish::
 
 Then you need to build sources with::
 
-      make clean
-      make build
+      meson build
+      ninja -C build
 
 Create a package for your distribution::
 
@@ -97,28 +95,26 @@ specific python version to build caffeine-ng.
 ``checkinstall`` is available for various distributions, so you may follow
 these steps adapting them to your distribution
 
-ArchLinux
-.........
-
-On ArchLinux, caffeine-ng is available at the `AUR`_.
-
-.. _AUR: https://aur.archlinux.org/packages/caffeine-ng/
-
 Gentoo
 ......
 
 Gentoo users may find `caffeine-ng <https://github.com/PF4Public/gentoo-overlay/tree/master/x11-misc/caffeine-ng>`_ in `::pf4public <https://github.com/PF4Public/gentoo-overlay>`_ Gentoo overlay
 
-Instructions for packager
--------------------------
+Others / from source
+....................
 
-Generating a Python wheel for this will produce bogus results. Python wheels do
-now allow for files outside python's site-packages (and things in /bin).
+To manually install caffeine-ng, run::
 
-The Python ecosystem is deprecating the usage of `pip` and `setuptools` as
-generic packaging tools. This project will likely migrate to `meson` in future,
-which should ease shipping all the non-Python bits of it (desktop entry, icon,
-translations, service files, etc).
+      meson build
+      ninja -C build
+      sudo ninja -C build install
+      sudo glib-compile-schemas /usr/share/glib-2.0/schemas
+
+Note for packagers
+..................
+
+Generally, package manager handle running ``glib-compile-schemas`` themselves,
+so this doesn't need to be triggered explicitly.
 
 Auto-start
 ----------
@@ -126,11 +122,19 @@ Auto-start
 To have Caffeine-ng run on startup, add it to your System Settings => Startup
 Programs list.
 
+Translations
+------------
+
+To generate the `pot` file use::
+
+    find . -iname "*.py" -o -iname "*.glade" | \
+    xargs xgettext --from-code utf-8 -o translations/caffeine.pot
+
 License
 -------
 
-Copyright (C) 2009 The Caffeine Developers
 Copyright (C) 2014-2022 Hugo Osvaldo Barrera <hugo@barrera.io>
+Copyright (C) 2009 The Caffeine Developers
 
 Caffeine-ng is distributed under the GNU General Public License, either version
 3, or (at your option) any later version. See LICENCE for details.

@@ -26,7 +26,7 @@ __version__ = version
 def init_translations() -> None:
     """Initialise translations. Should be called just once at startup."""
 
-    GETTEXT_DOMAIN = "caffeine"
+    GETTEXT_DOMAIN = "caffeine-ng"
     locale.setlocale(locale.LC_ALL, "")
 
     for module in locale, gettext:
