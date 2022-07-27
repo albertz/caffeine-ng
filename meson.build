@@ -27,7 +27,7 @@ pkgdatadir = join_paths(prefix, get_option('datadir'))
 
 # TODO: use pkgdatadir=/usr/share/caffeine
 #       and only hardcode this base path into paths.py
-localedir = join_paths(pkgdatadir, 'locale')
+localedir = join_paths(prefix, get_option('localedir'))
 gladedir = join_paths(pkgdatadir, 'caffeine/glade')
 imagedir = join_paths(pkgdatadir, 'caffeine/images')
 iconsdir = join_paths(pkgdatadir, 'icons')
