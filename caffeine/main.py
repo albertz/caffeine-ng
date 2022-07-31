@@ -32,9 +32,17 @@ try:
     gi.require_version("Notify", "0.7")
 except ValueError:
     gi.require_version("Notify", "0.8")
-gi.require_version("AppIndicator3", "0.1")
 
-from gi.repository import AppIndicator3  # noqa: E402
+# Prefer ayatana-appindicators if available, otherwise use appindicators.
+# The former is a currently maintained branch of the latter, and is more readily
+# available in various distributions.
+try:
+    gi.require_version('AyatanaAppIndicator3', '0.1')
+    from gi.repository import AyatanaAppIndicator3 as AppIndicator3
+except ImportError:
+    gi.require_version("AppIndicator3", "0.1")
+    from gi.repository import AppIndicator3
+
 from gi.repository import GdkPixbuf  # noqa: E402
 from gi.repository import Gtk  # noqa: E402
 from gi.repository.Notify import Notification  # noqa: E402
