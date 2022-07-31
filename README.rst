@@ -107,7 +107,7 @@ To manually install caffeine-ng, run::
 
       meson build
       ninja -C build
-      sudo ninja -C build install
+      sudo meson install -C build
       sudo glib-compile-schemas /usr/share/glib-2.0/schemas
 
 Note for packagers
