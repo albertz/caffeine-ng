@@ -24,7 +24,7 @@ except ModuleNotFoundError:
 
     xdg_config_home = str(xdg_config_home())
 
-LOCALE_PATH = '@localedir@'
+LOCALE_PATH = "@localedir@"
 GLADE_PATH = "@gladedir@"
 IMAGE_PATH = "@imagedir@"
 ICON_PATH = "@iconsdir@"

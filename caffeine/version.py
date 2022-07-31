@@ -1,1 +1,1 @@
-version = '@VCS_TAG@'
+version = "@VCS_TAG@"

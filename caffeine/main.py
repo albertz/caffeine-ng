@@ -37,7 +37,7 @@ except ValueError:
 # The former is a currently maintained branch of the latter, and is more readily
 # available in various distributions.
 try:
-    gi.require_version('AyatanaAppIndicator3', '0.1')
+    gi.require_version("AyatanaAppIndicator3", "0.1")
     from gi.repository import AyatanaAppIndicator3 as AppIndicator3
 except ImportError:
     gi.require_version("AppIndicator3", "0.1")
