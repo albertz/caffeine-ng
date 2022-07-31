@@ -74,8 +74,12 @@ python.install_sources(py_sources,
   subdir: 'caffeine',
 )
 
-install_data(
-  'bin/caffeine',
+configure_file(
+  input: 'bin/caffeine',
+  output: 'caffeine',
+  configuration: configuration_data({
+    'PYTHON': python.full_path()
+  }),
   install_mode: 'rwxr-xr-x',
   install_dir: get_option('bindir'),
 )

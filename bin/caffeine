@@ -1,4 +1,4 @@
-#!/usr/bin/python
+#!@PYTHON@
 
 from caffeine.cli import cli
 
