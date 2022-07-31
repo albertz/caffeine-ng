@@ -12,7 +12,6 @@ dependency('pygobject-3.0')
 dependency('dbus-python')
 dependency('gtk+-3.0')
 dependency('libnotify')
-dependency('indicator3-0.4')
 dependency('appindicator3-0.1')
 dependency('libxfconf-0', required: false)
 
