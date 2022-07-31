@@ -51,7 +51,10 @@ version_py = configure_file(
     input: 'caffeine/version.py',
     output: 'version.py',
     configuration: configuration_data({
-      'VCS_TAG': run_command('git', 'describe', '--long', '--tags', '--dirty', '--always').stdout().strip()
+      'VCS_TAG': run_command(
+        'git', 'describe', '--long', '--tags', '--dirty', '--always',
+        check: true
+      ).stdout().strip()
     }),
 )
 
