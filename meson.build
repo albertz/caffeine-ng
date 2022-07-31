@@ -16,7 +16,7 @@ ayatana_appindicator = dependency('ayatana-appindicator3-0.1', required: false)
 appindicator = dependency('appindicator3-0.1', required: false)
 dependency('libxfconf-0', required: false)
 
-if not (ayatana-appindicator.found() or appindicator.found())
+if not (ayatana_appindicator.found() or appindicator.found())
   error('At least on of these is required:', appindicator.name(), ayatana_appindicator.name())
 endif
 
