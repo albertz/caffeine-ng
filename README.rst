@@ -69,11 +69,11 @@ Debian and derivatives
 
 First install all the required packages::
 
-      apt install python-click python-ewmh python-setproctitle python-wheel python-xdg
+      apt install python-click python-ewmh python-setproctitle python-wheel python-xdg scdoc
 
 And mark them auto if you wish::
 
-      apt-mark auto python-click python-ewmh python-setproctitle python-wheel python-xdg
+      apt-mark auto python-click python-ewmh python-setproctitle python-wheel python-xdg scdoc
 
 Then you need to build sources with::
 

@@ -103,7 +103,18 @@ install_data(
 
 subdir('translations')
 
-install_man('share/man/man1/caffeine.1')
+scdoc = dependency('scdoc', required: true, version: '>= 1.9.7')
+mandir = get_option('mandir')
+custom_target(
+	'caffeine.1',
+	input: 'caffeine.1.scd',
+	output: 'caffeine.1',
+	command: scdoc.get_variable('scdoc'),
+	feed: true,
+	capture: true,
+	install: true,
+	install_dir: join_paths(mandir, 'man1/caffeine')
+)
 
 install_subdir('caffeine/assets/glade',
   install_dir: gladedir,

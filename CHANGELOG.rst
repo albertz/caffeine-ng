@@ -14,6 +14,7 @@ v4.1.0
   are present, the ``ayatana-appindicator3`` is used.
 - ``indicator3`` is no longer marked as a dependency. It was not actually
   used in the past either; only ``appindicator3`` was used.
+- ``scdoc`` is required to build man pages.
 
 .. _Meson for Python applications: https://hugo.barrera.io/journal/2022/07/26/meson-for-python-applications/
 
