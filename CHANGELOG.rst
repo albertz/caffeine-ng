@@ -5,8 +5,17 @@ Changelog
 v4.1.0
 ------
 
-- The build system has switched to `meson`.
-- The `wheel` python package is no longer required.
+- The build system has switched to ``meson``. For more details on why this is
+  happening, see `Meson for Python applications`_
+- The ``wheel``, ``build`` and ``install`` python packages is no longer
+  required (neither at build time nor runtime).
+- ``ayatana-appindicator3`` will be used if present. In such scenarios,
+  ``appindicator3`` is no longer required. Either one may be present. If both
+  are present, the ``ayatana-appindicator3`` is used.
+- ``indicator3`` is no longer marked as a dependency. It was not actually
+  used in the past either; only ``appindicator3`` was used.
+
+.. _Meson for Python applications: https://hugo.barrera.io/journal/2022/07/26/meson-for-python-applications/
 
 v4.0.1
 ------
