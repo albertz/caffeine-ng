@@ -116,6 +116,11 @@ Note for packagers
 Generally, package manager handle running ``glib-compile-schemas`` themselves,
 so this doesn't need to be triggered explicitly.
 
+To install into ``/usr/`` rather than ``/usr/local/``, instead of running
+``meson build`` run `meson ``meson --prefix /usr build``.
+
+See https://mesonbuild.com/Builtin-options.html for details.
+
 Auto-start
 ----------
 
