@@ -69,11 +69,11 @@ Debian and derivatives
 
 First install all the required packages::
 
-      apt install python-click python-ewmh python-setproctitle python-wheel python-xdg scdoc
+      apt install python3-click python3-ewmh python3-setproctitle python3-wheel python3-xdg scdoc
 
 And mark them auto if you wish::
 
-      apt-mark auto python-click python-ewmh python-setproctitle python-wheel python-xdg scdoc
+      apt-mark auto python3-click python3-ewmh python3-setproctitle python3-wheel python3-xdg scdoc
 
 Then you need to build sources with::
 
@@ -82,18 +82,22 @@ Then you need to build sources with::
 
 Create a package for your distribution::
 
-      checkinstall --pkgname=caffeine-ng --pkgversion=3.4 --requires="python-click \(\>=0.6.2\),python-ewmh \(\>=0.1.4\),python-setproctitle \(\>=1.1.10\),python-wheel \(\>=0.29.0\),python-xdg \(\>=0.25\)" --conflicts="caffeine" --nodoc python ./setup.py install --install-layout=deb
+      checkinstall \
+        --pkgname=caffeine-ng \
+        --pkgversion=4.1 \
+        --requires="python3-click (>=0.6.2),python3-ewmh (>=0.1.4),python3-setproctitle (>=1.1.10),python3-wheel (>=0.29.0),python3-xdg (>=0.25)" \
+        --conflicts="caffeine" \
+        --nodoc meson install -C build
 
 Replace version string with correct version and append this command with
 ``--install=no`` should you wish to inspect created package before installing
-it Replace ``python`` with ``python3`` in package names above if you wish to
-build caffeine-ng with python 3
-
-Replace ``python`` with ``python3`` in ``checkinstall`` invocation to use
-specific python version to build caffeine-ng.
+it.
 
 ``checkinstall`` is available for various distributions, so you may follow
 these steps adapting them to your distribution
+
+See https://codeberg.org/WhyNotHugo/caffeine-ng/issues/118 for additional
+details.
 
 Gentoo
 ......
