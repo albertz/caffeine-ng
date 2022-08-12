@@ -31,10 +31,6 @@ def get_glade_file(filename):
     return join(GLADE_PATH, filename)
 
 
-def get_config_dir():
-    return __config_dir
-
-
 def get_whitelist_file():
     return join(__config_dir, "whitelist.txt")
 
