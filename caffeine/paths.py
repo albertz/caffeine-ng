@@ -14,8 +14,6 @@
 # along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #
 import os
-from os import makedirs
-from os.path import exists
 from os.path import join
 
 LOCALE_PATH = "@localedir@"
@@ -25,6 +23,7 @@ ICON_PATH = "@iconsdir@"
 
 
 xdg_config_home = os.environ.get("XDG_CONFIG_HOME") or os.path.expanduser("~/.config")
+app_config_dir = join(xdg_config_home, "caffeine")
 
 
 def get_glade_file(filename):
@@ -32,21 +31,8 @@ def get_glade_file(filename):
 
 
 def get_whitelist_file():
-    return join(__config_dir, "whitelist.txt")
+    return join(app_config_dir, "whitelist.txt")
 
 
 def get_blacklist_file_audio():
-    return join(__config_dir, "audio_blacklist.txt")
-
-
-__config_dir = join(xdg_config_home, "caffeine")
-
-
-if not exists(__config_dir):
-    makedirs(__config_dir)
-
-if not exists(get_whitelist_file()):
-    open(get_whitelist_file(), "a").close()
-
-if not exists(get_blacklist_file_audio()):
-    open(get_blacklist_file_audio(), "a").close()
+    return join(app_config_dir, "audio_blacklist.txt")
