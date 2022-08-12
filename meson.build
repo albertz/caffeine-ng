@@ -22,7 +22,7 @@ endif
 
 pymod = import('python')
 python = pymod.find_installation('python3',
-  modules: ['xdg', 'click', 'ewmh', 'setproctitle', 'pulsectl']
+  modules: ['click', 'ewmh', 'setproctitle', 'pulsectl']
 )
 python.dependency()
 

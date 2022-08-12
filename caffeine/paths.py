@@ -13,21 +13,18 @@
 # You should have received a copy of the GNU General Public License
 # along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #
+import os
 from os import makedirs
 from os.path import exists
 from os.path import join
-
-try:
-    from xdg.BaseDirectory import xdg_config_home
-except ModuleNotFoundError:
-    from xdg import xdg_config_home
-
-    xdg_config_home = str(xdg_config_home())
 
 LOCALE_PATH = "@localedir@"
 GLADE_PATH = "@gladedir@"
 IMAGE_PATH = "@imagedir@"
 ICON_PATH = "@iconsdir@"
+
+
+xdg_config_home = os.environ.get("XDG_CONFIG_HOME") or os.path.expanduser("~/.config")
 
 
 def get_glade_file(filename):

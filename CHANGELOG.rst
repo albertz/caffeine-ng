@@ -15,6 +15,8 @@ v4.1.0
 - ``indicator3`` is no longer marked as a dependency. It was not actually
   used in the past either; only ``appindicator3`` was used.
 - ``scdoc`` is required to build man pages.
+- The ``xdg``  python is no longer required. Our usage of it was trivial, and
+  has been replaced with three very simple lines of code.
 
 .. _Meson for Python applications: https://hugo.barrera.io/journal/2022/07/26/meson-for-python-applications/
 

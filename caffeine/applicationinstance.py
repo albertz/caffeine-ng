@@ -20,11 +20,6 @@ import os
 from contextlib import contextmanager
 from typing import Optional
 
-try:
-    from xdg.BaseDirectory import get_runtime_dir
-except ModuleNotFoundError:
-    from xdg import xdg_runtime_dir as get_runtime_dir
-
 logger = logging.getLogger(__name__)
 
 
@@ -40,7 +35,7 @@ class ApplicationInstance:
 
     def __init__(self, name: str):
         self.name = name
-        self.pid_path = os.path.join(get_runtime_dir(), name, "pid")
+        self.pid_path = os.path.expandvars(f"$XDG_RUNTIME_DIR/{name}/pid")
 
     @property
     def pid(self) -> Optional[int]:

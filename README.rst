@@ -69,11 +69,11 @@ Debian and derivatives
 
 First install all the required packages::
 
-      apt install python3-click python3-ewmh python3-setproctitle python3-wheel python3-xdg scdoc
+      apt install python3-click python3-ewmh python3-setproctitle python3-wheel scdoc
 
 And mark them auto if you wish::
 
-      apt-mark auto python3-click python3-ewmh python3-setproctitle python3-wheel python3-xdg scdoc
+      apt-mark auto python3-click python3-ewmh python3-setproctitle python3-wheel scdoc
 
 Then you need to build sources with::
 
@@ -85,7 +85,7 @@ Create a package for your distribution::
       checkinstall \
         --pkgname=caffeine-ng \
         --pkgversion=4.1 \
-        --requires="python3-click (>=0.6.2),python3-ewmh (>=0.1.4),python3-setproctitle (>=1.1.10),python3-wheel (>=0.29.0),python3-xdg (>=0.25)" \
+        --requires="python3-click (>=0.6.2),python3-ewmh (>=0.1.4),python3-setproctitle (>=1.1.10),python3-wheel (>=0.29.0)" \
         --conflicts="caffeine" \
         --nodoc meson install -C build
 
