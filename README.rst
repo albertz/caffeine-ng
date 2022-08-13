@@ -69,11 +69,25 @@ Debian and derivatives
 
 First install all the required packages::
 
-      apt install python3-click python3-ewmh python3-setproctitle python3-wheel scdoc
+      apt install meson \
+        python-gi-dev \
+        python-dbus-dev \
+        libgtk-3-dev \
+        libnotify-dev \
+        libappindicator3-dev \
+        python3-click \
+        python3-ewmh \
+        python3-setproctitle \
+        python3-pulsectl \
+        git \
+        scdoc
+
+# TODO: python-wheel is not required?
 
 And mark them auto if you wish::
 
-      apt-mark auto python3-click python3-ewmh python3-setproctitle python3-wheel scdoc
+      apt-mark auto meson \
+        ...same list as above...
 
 Then you need to build sources with::
 
@@ -85,9 +99,10 @@ Create a package for your distribution::
       checkinstall \
         --pkgname=caffeine-ng \
         --pkgversion=4.1 \
-        --requires="python3-click (>=0.6.2),python3-ewmh (>=0.1.4),python3-setproctitle (>=1.1.10),python3-wheel (>=0.29.0)" \
+        --requires="python3-gi,python3-dev,libgtk-3-0,libnotify4,libappindicator3-1,python3-click,python3-ewmh,python3-setproctitle," \
         --conflicts="caffeine" \
-        --nodoc meson install -C build
+        --nodoc \
+        meson install -C build
 
 Replace version string with correct version and append this command with
 ``--install=no`` should you wish to inspect created package before installing
@@ -96,8 +111,10 @@ it.
 ``checkinstall`` is available for various distributions, so you may follow
 these steps adapting them to your distribution
 
-See https://codeberg.org/WhyNotHugo/caffeine-ng/issues/118 for additional
-details.
+For additional discussion on building DEB packages, see:
+
+- https://codeberg.org/WhyNotHugo/caffeine-ng/issues/118
+- https://codeberg.org/WhyNotHugo/caffeine-ng/issues/121
 
 Gentoo
 ......
