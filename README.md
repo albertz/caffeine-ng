@@ -1,73 +1,54 @@
-Caffeine-ng
-===========
+# Caffeine-ng
 
-.. image:: https://ci.codeberg.org/api/badges/WhyNotHugo/caffeine-ng/status.svg
-  :target: https://ci.codeberg.org/WhyNotHugo/caffeine-ng/branches/main
-  :alt: build status
-
-.. image:: https://img.shields.io/pypi/v/caffeine-ng.svg
-  :target: https://pypi.python.org/pypi/caffeine-ng
-  :alt: version on pypi
-
-.. image:: https://img.shields.io/pypi/l/caffeine-ng.svg
-  :target: https://codeberg.org/WhyNotHugo/caffeine-ng/src/branch/main/LICENCE
-  :alt: licence
+[![build status](https://ci.codeberg.org/api/badges/WhyNotHugo/caffeine-ng/status.svg)](https://ci.codeberg.org/WhyNotHugo/caffeine-ng/branches/main)
+[![licence](https://img.shields.io/pypi/l/caffeine-ng.svg)](https://codeberg.org/WhyNotHugo/caffeine-ng/src/branch/main/LICENCE)
 
 Caffeine is a little daemon that sits in your systray, and prevents the
 screensaver from showing up, or the system from going to sleep. It does so when
 an application is fullscreened (eg: youtube), or when you click on the systray
 icon (which you can do, when, eg: reading).
 
-History
--------
+## History
 
-Caffeing-ng (since 2014) started as a fork of `Caffeine 2.4`_, since the
+Caffeing-ng (since 2014) started as a fork of [Caffeine 2.4], since the
 original version dropped support for the systray icon in favour of only
 automatic detection of fullscreen apps only, which turned to be a rather
-`controversial`_ decision.
+[controversial] decision.
 
 The intention of this fork is to also evolve on its own, not only fixing
 issues, but also implemented missing features, when relevant.
 
 Caffeine-ng was shortly know as Taurine, a play on its successor's name, since
-taurine is a known stimulant, commonly found in energy drinks.  However, this
+taurine is a known stimulant, commonly found in energy drinks. However, this
 name did not last, since the artwork would not match adequately, and changing
 it was undesirable.
 
-.. _Caffeine 2.4: http://launchpad.net/caffeine/
-.. _controversial: https://bugs.launchpad.net/caffeine/+bug/1321750
+[caffeine 2.3]: http://launchpad.net/caffeine/
+[controversial]: https://bugs.launchpad.net/caffeine/+bug/1321750
 
-System requirements
--------------------
+## System requirements
 
-* Python 3.6 to 3.9 is required.
-
-* ``caffeine-ng`` works with the following screensavers / screenlockers:
-
-  * Anything that implements the ``org.freedesktop.ScreenSaver`` API (this
+- Python 3.6 to 3.10 is required.
+- `caffeine-ng` works with the following screensavers / screenlockers:
+  - Anything that implements the `org.freedesktop.ScreenSaver` API (this
     includes KDE, amongst others)
-  * gnome-screensaver
-  * XSS
-  * Xorg + DPMS
-  * xautolock
-  * xidlehook.
+  - gnome-screensaver
+  - XSS
+  - Xorg + DPMS
+  - xautolock
+  - xidlehook.
 
-See ``setup.py`` for required python packages
+## Installation
 
-Installation
-------------
+### ArchLinux
 
-ArchLinux
-.........
+On ArchLinux, caffeine-ng is available at the [AUR][aur].
 
-On ArchLinux, caffeine-ng is available at the `AUR`_.
+[aur]: https://aur.archlinux.org/packages/caffeine-ng/
 
-.. _AUR: https://aur.archlinux.org/packages/caffeine-ng/
+### Debian and derivatives
 
-Debian and derivatives
-......................
-
-First install all the required packages::
+First install all the required packages:
 
       apt install meson \
         python-gi-dev \
@@ -82,19 +63,17 @@ First install all the required packages::
         git \
         scdoc
 
-# TODO: python-wheel is not required?
-
-And mark them auto if you wish::
+And mark them auto if you wish:
 
       apt-mark auto meson \
         ...same list as above...
 
-Then you need to build sources with::
+Then you need to build sources with:
 
       meson build
       ninja -C build
 
-Create a package for your distribution::
+Create a package for your distribution:
 
       checkinstall \
         --pkgname=caffeine-ng \
@@ -105,61 +84,58 @@ Create a package for your distribution::
         meson install -C build
 
 Replace version string with correct version and append this command with
-``--install=no`` should you wish to inspect created package before installing
-it.
+`--install=no` should you wish to inspect created package before installing it.
 
-``checkinstall`` is available for various distributions, so you may follow
-these steps adapting them to your distribution
+`checkinstall` is available for various distributions, so you may follow these
+steps adapting them to your distribution
 
 For additional discussion on building DEB packages, see:
 
 - https://codeberg.org/WhyNotHugo/caffeine-ng/issues/118
 - https://codeberg.org/WhyNotHugo/caffeine-ng/issues/121
 
-Gentoo
-......
+### Gentoo
 
-Gentoo users may find `caffeine-ng <https://github.com/PF4Public/gentoo-overlay/tree/master/x11-misc/caffeine-ng>`_ in `::pf4public <https://github.com/PF4Public/gentoo-overlay>`_ Gentoo overlay
+Gentoo users may find [caffeine-ng][gentoo-caffeine-ng] in
+[::pf4public][gentoo-overlay] Gentoo overlay.
 
-Others / from source
-....................
+[gentoo-caffeine-ng]: https://github.com/PF4Public/gentoo-overlay/tree/master/x11-misc/caffeine-ng
+[gentoo-overlay]: https://github.com/PF4Public/gentoo-overlay
 
-To manually install caffeine-ng, run::
+### Others / from source
+
+To manually install caffeine-ng, run:
 
       meson build
       ninja -C build
       sudo meson install -C build
       sudo glib-compile-schemas /usr/share/glib-2.0/schemas
 
-Note for packagers
-..................
+### Note for packagers
 
-Generally, package manager handle running ``glib-compile-schemas`` themselves,
-so this doesn't need to be triggered explicitly.
+Generally, package manager handle running `glib-compile-schemas` themselves, so
+this doesn't need to be triggered explicitly.
 
-To install into ``/usr/`` rather than ``/usr/local/``, instead of running
-``meson build`` run `meson ``meson --prefix /usr build``.
+To install into `/usr/` rather than `/usr/local/`, instead of running `meson build`
+run `meson --prefix /usr build`.
 
 See https://mesonbuild.com/Builtin-options.html for details.
 
-Auto-start
-----------
+## Auto-start
 
 To have Caffeine-ng run on startup, add it to your System Settings => Startup
 Programs list.
 
-Translations
-------------
+## Translations
 
 To generate the `pot` file use::
 
     find . -iname "*.py" -o -iname "*.glade" | \
     xargs xgettext --from-code utf-8 -o translations/caffeine.pot
 
-License
--------
+## License
 
-Copyright (C) 2014-2022 Hugo Osvaldo Barrera <hugo@barrera.io>
+Copyright (C) 2014-2022 Hugo Osvaldo Barrera <hugo@whynothugo.nl>
 Copyright (C) 2009 The Caffeine Developers
 
 Caffeine-ng is distributed under the GNU General Public License, either version
@@ -168,21 +144,20 @@ Caffeine-ng is distributed under the GNU General Public License, either version
 The Caffeine-ng status icons are Copyright (C) 2014 mildmojo
 (http://github.com/mildmojo), and distributed under the terms of the GNU Lesser
 General Public License, either version 3, or (at your option) any later
-version.  See LGPL.
+version. See LGPL.
 
 The Caffeien-ng SVG shortcut icons are Copyright (C) 2009 Tommy Brunn
 (http://www.blastfromthepast.se/blabbermouth), and distributed under the
 terms of the GNU Lesser General Public License, either version 3, or (at
 your option) any later version. See LGPL.
 
-Hacking
--------
+## Contributing
 
-* To run: ``./bin/caffeine``
-* To compile translations: ``./update_translations``
+- To run: `./bin/caffeine`
+- To compile translations: `./update_translations`
 
 If you want to test out a translation without changing the language for the
-whole session: "LANG=ru_RU.UTF-8 ./bin/caffeine" (Replace ru_RU.UTF-8
-with whatever language you want to use. You will need to a language pack
-for the specific language) Be aware that some stock items
-will not be translated unless you log in with a given language.
+whole session: `LANG=ru_RU.UTF-8 ./bin/caffeine` (Replace ru_RU.UTF-8 with
+whichever language you want to use. You will need to a language pack for the
+specific language) Be aware that some stock items will not be translated unless
+you log in with a given language.
