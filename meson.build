@@ -26,6 +26,8 @@ python = pymod.find_installation('python3',
 )
 python.dependency()
 
+git = find_program('git', required: true)
+
 prefix = get_option('prefix')
 pkgdatadir = join_paths(prefix, get_option('datadir'))
 
@@ -56,7 +58,7 @@ version_py = configure_file(
     output: 'version.py',
     configuration: configuration_data({
       'VCS_TAG': run_command(
-        'git', 'describe', '--long', '--tags', '--dirty', '--always',
+        git, 'describe', '--long', '--tags', '--dirty', '--always',
         check: true
       ).stdout().strip()
     }),
