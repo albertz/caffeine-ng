@@ -32,7 +32,7 @@ class BaseInhibitor(ABC):
                 self.uninhibit()
 
     @property
-    def is_screen_inhibitor(self):
+    def is_screen_inhibitor(self) -> bool:
         """Return True if this instance is a screen saver inhibitor.
 
         Inhibitor which are sleep inhibitors should return False.
@@ -197,7 +197,7 @@ class DpmsInhibitor(BaseInhibitor):
         os.system("xset +dpms")
 
     @property
-    def is_screen_inhibitor(self):
+    def is_screen_inhibitor(self) -> bool:
         return True
 
     @property
