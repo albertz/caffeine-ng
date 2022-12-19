@@ -31,6 +31,7 @@ class BaseInhibitor(ABC):
             if self.running:
                 self.uninhibit()
 
+    @property
     def is_screen_inhibitor(self):
         """Return True if this instance is a screen saver inhibitor.
 
@@ -117,7 +118,8 @@ class XdgScreenSaverInhibitor(BaseInhibitor):
             self.__proxy.UnInhibit(self.__cookie)
         self.running = False
 
-    def is_screen_inhibitor(self):
+    @property
+    def is_screen_inhibitor(self) -> bool:
         return True
 
     @property
@@ -194,6 +196,7 @@ class DpmsInhibitor(BaseInhibitor):
         # Grep `xset q` for "DPMS is Enabled"
         os.system("xset +dpms")
 
+    @property
     def is_screen_inhibitor(self):
         return True
 
