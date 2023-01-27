@@ -1,3 +1,8 @@
+#!/usr/bin/env python3
+
+"""
+Inhibit from sleep mode (but allow monitor to go off)
+"""
 
 import caffeine.inhibitors
 from caffeine.inhibitors import *
